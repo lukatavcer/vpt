@@ -3,7 +3,7 @@
 // #include ../mixins/unproject.glsl
 // #include ../mixins/intersectCube.glsl
 
-// #section EAMGenerate/vertex
+// #section RCGenerate/vertex
 
 #version 300 es
 precision mediump float;
@@ -21,9 +21,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-// #section EAMGenerate/fragment
+    // #section RCGenerate/fragment
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 uniform mediump sampler3D uVolume;
@@ -70,7 +70,6 @@ void main() {
 
             // Map intensity from the transfer function
             // set bias to 0.5, not yet sure why
-            // Alpha-blending
             colorSample = texture(uTransferFunction, vec2(val, 0.5));
             colorSample.a *= rayStepLength * uAlphaCorrection;
             colorSample.rgb *= colorSample.a;
@@ -86,9 +85,9 @@ void main() {
     }
 }
 
-// #section EAMIntegrate/vertex
+    // #section RCIntegrate/vertex
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -99,9 +98,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-// #section EAMIntegrate/fragment
+    // #section RCIntegrate/fragment
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 uniform mediump sampler2D uAccumulator;
@@ -114,9 +113,9 @@ void main() {
     oColor = texture(uFrame, vPosition);
 }
 
-// #section EAMRender/vertex
+    // #section RCRender/vertex
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -127,9 +126,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-// #section EAMRender/fragment
+    // #section RCRender/fragment
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 uniform mediump sampler2D uAccumulator;
@@ -141,9 +140,9 @@ void main() {
     oColor = texture(uAccumulator, vPosition);
 }
 
-// #section EAMReset/vertex
+    // #section RCReset/vertex
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -152,9 +151,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-// #section EAMReset/fragment
+    // #section RCReset/fragment
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 out vec4 oColor;

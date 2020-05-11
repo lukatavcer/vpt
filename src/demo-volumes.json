@@ -1,0 +1,47 @@
+[
+  {
+    "value": "tooth",
+    "label": "Tooth (1.5 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/tooth2.bvp"
+  },
+  {
+    "value": "frog",
+    "label": "Frog (2.8 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/frog.bvp"
+  },
+  {
+    "value": "baby",
+    "label": "Baby (6.2 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/baby.bvp"
+  },
+  {
+    "value": "bruce",
+    "label": "Bruce (9.8 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/bruce.bvp"
+  },
+  {
+    "value": "foot",
+    "label": "Foot (17 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/foot.bvp"
+  },
+  {
+    "value": "skull",
+    "label": "Skull (17 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/skull.bvp"
+  },
+  {
+    "value": "mrihead",
+    "label": "MRI Head (17 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/MRI-head.bvp"
+  },
+  {
+    "value": "bonsai",
+    "label": "Bonsai (46 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/bonsai.bvp"
+  },
+  {
+    "value": "manix",
+    "label": "Manix (116 MB)",
+    "url": "http://lgm.fri.uni-lj.si/~ziga/vpt/bvp/manix.bvp"
+  }
+]

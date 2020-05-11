@@ -6,6 +6,7 @@
   "scripts": {
     "build": "bin/packer",
     "start": "nodemon bin/server-express",
+    "start:dev": "npm run build && nodemon bin/server-express -e js,json --watch src -exec 'npm run build && npm run bin/server-express'",
     "start-node": "bin/server-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

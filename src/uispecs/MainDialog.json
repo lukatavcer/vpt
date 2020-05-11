@@ -40,6 +40,10 @@
                       "bind": "rendererSelect",
                       "options": [
                         {
+                          "value": "rc",
+                          "label": "Ray Casting (EAM)"
+                        },
+                        {
                           "value": "mip",
                           "label": "Maximum intensity projection"
                         },

@@ -288,6 +288,7 @@ hasComputeCapabilities() {
 
 _getRendererClass(renderer) {
     switch (renderer) {
+        case 'rc' : return RCRenderer;
         case 'mip' : return MIPRenderer;
         case 'iso' : return ISORenderer;
         case 'eam' : return EAMRenderer;
