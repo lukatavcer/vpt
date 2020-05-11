@@ -5,7 +5,8 @@
   "main": "bin/server-express",
   "scripts": {
     "build": "bin/packer",
-    "start": "bin/server-express",
+    "start": "nodemon bin/server-express",
+    "start-node": "bin/server-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,7 +17,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/terier/vpt#readme",
   "dependencies": {
-    "express": "latest"
+    "express": "latest",
+    "nodemon": "^2.0.3"
   },
   "engines": {
     "node": "12.x"
