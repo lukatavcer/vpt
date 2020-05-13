@@ -49,9 +49,9 @@ _generateFrame() {
     gl.useProgram(program.program);
 
     gl.activeTexture(gl.TEXTURE0);
-    gl.bindTexture(gl.TEXTURE_2D, this._accumulationBuffer.getAttachments().color[0]);
-    gl.activeTexture(gl.TEXTURE1);
     gl.bindTexture(gl.TEXTURE_3D, this._volume.getTexture());
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, this._accumulationBuffer.getAttachments().color[0]);
 
     gl.uniform1i(program.uniforms.uClosest, 0);
     gl.uniform1i(program.uniforms.uVolume, 1);

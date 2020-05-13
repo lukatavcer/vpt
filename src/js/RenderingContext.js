@@ -292,9 +292,9 @@ _getRendererClass(renderer) {
         case 'mip' : return MIPRenderer;
         case 'iso' : return ISORenderer;
         case 'eam' : return EAMRenderer;
-        case 'mcs' : return MCSRenderer;
-        case 'mcm' : return MCMRenderer;
-        case 'mcc' : return MCCRenderer;
+        // case 'mcs' : return MCSRenderer;
+        // case 'mcm' : return MCMRenderer;
+        // case 'mcc' : return MCCRenderer;
     }
 }
 

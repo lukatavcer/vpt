@@ -172,9 +172,9 @@ _getDialogForRenderer(renderer) {
         case 'mip' : return MIPRendererDialog;
         case 'iso' : return ISORendererDialog;
         case 'eam' : return EAMRendererDialog;
-        case 'mcs' : return MCSRendererDialog;
-        case 'mcm' : return MCMRendererDialog;
-        case 'mcc' : return MCMRendererDialog; // yes, the same
+        // case 'mcs' : return MCSRendererDialog;
+        // case 'mcm' : return MCMRendererDialog;
+        // case 'mcc' : return MCMRendererDialog; // yes, the same
     }
 }
 

@@ -32,6 +32,28 @@
       ]
     },
     {
+      "type": "field",
+      "label": "Color:",
+      "children": [
+        {
+          "type": "color-chooser",
+          "bind": "color",
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "label": "Light direction:",
+      "children": [
+        {
+          "type": "vector",
+          "bind": "direction",
+          "value": 1
+        }
+      ]
+    },
+    {
       "type": "accordion",
       "label": "Transfer function",
       "children": [

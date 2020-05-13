@@ -41,7 +41,8 @@
                       "options": [
                         {
                           "value": "rc",
-                          "label": "Ray Casting (EAM)"
+                          "label": "Ray Casting (EAM)",
+                          "selected": true
                         },
                         {
                           "value": "mip",
@@ -54,19 +55,6 @@
                         {
                           "value": "eam",
                           "label": "Emission-absorption model"
-                        },
-                        {
-                          "value": "mcs",
-                          "label": "Single scattering"
-                        },
-                        {
-                          "value": "mcm",
-                          "label": "Multiple scattering",
-                          "selected": true
-                        },
-                        {
-                          "value": "mcc",
-                          "label": "Multiple scattering (compute)"
                         }
                       ]
                     }

@@ -10,7 +10,9 @@ constructor(gl, volume, environmentTexture, options) {
 
     Object.assign(this, {
         _stepSize        : 0.05,
-        _alphaCorrection : 3
+        _alphaCorrection : 3,
+        _light          : [0.5, 0.5, 0.5],
+        _diffuse        : [0.7, 0.8, 0.9]
     }, options);
 
     this._programs = WebGL.buildPrograms(this._gl, {
@@ -50,11 +52,11 @@ _generateFrame() {
     gl.activeTexture(gl.TEXTURE1);
     gl.bindTexture(gl.TEXTURE_2D, this._transferFunction);
 
-    gl.uniform1i(program.uniforms.uVolume, 0);
     gl.uniform1i(program.uniforms.uTransferFunction, 1);
+    gl.uniform1i(program.uniforms.uVolume, 0);
     gl.uniform1f(program.uniforms.uStepSize, this._stepSize);
-    gl.uniform1f(program.uniforms.uAlphaCorrection, this._alphaCorrection);
     gl.uniform1f(program.uniforms.uOffset, Math.random());
+    gl.uniform1f(program.uniforms.uAlphaCorrection, this._alphaCorrection);
     gl.uniformMatrix4fv(program.uniforms.uMvpInverseMatrix, false, this._mvpInverseMatrix.m);
 
     gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
@@ -99,8 +101,8 @@ _getFrameBufferSpec() {
         min            : gl.NEAREST,
         mag            : gl.NEAREST,
         format         : gl.RGBA,
-        internalFormat : gl.RGBA,
-        type           : gl.UNSIGNED_BYTE
+        internalFormat : gl.RGBA16F,
+        type           : gl.FLOAT
     }];
 }
 
@@ -112,8 +114,8 @@ _getAccumulationBufferSpec() {
         min            : gl.NEAREST,
         mag            : gl.NEAREST,
         format         : gl.RGBA,
-        internalFormat : gl.RGBA,
-        type           : gl.UNSIGNED_BYTE
+        internalFormat : gl.RGBA16F,
+        type           : gl.FLOAT
     }];
 }
 

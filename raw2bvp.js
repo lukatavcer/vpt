@@ -152,13 +152,17 @@ function extractBlock(volumeData, volumeDimensions, blockOffset, blockDimensions
 }
 
 function combineVolumeAndGradient(volumeData, gradientData) {
-    if (volumeData.length !== gradientData.length) {
+    if (volumeData.length * 3 !== gradientData.length) {
         throw new Error('Cannot combine volume with gradient');
     }
-    let data = Buffer.allocUnsafe(volumeData.length * 2);
+    let data = Buffer.allocUnsafe(volumeData.length * 4);
     for (let i = 0; i < volumeData.length; i++) {
-        data[2 * i + 0] = volumeData[i];
-        data[2 * i + 1] = gradientData[i];
+        data[4 * i + 0] = volumeData[i];
+        data[4 * i + 1] = gradientData[i * 3 + 0];
+        data[4 * i + 2] = gradientData[i * 3 + 1];
+        data[4 * i + 3] = gradientData[i * 3 + 2];
+		//console.error(volumeData[i], gradientData[i * 3 + 0], gradientData[i * 3 + 1], gradientData[i * 3 + 2]);
+		//console.error(data[4 * i + 0], data[4 * i + 1], data[4 * i + 2], data[4 * i + 3]);
     }
     return data;
 }
@@ -513,7 +517,10 @@ function computeGradientSobel(volumeData, volumeDimensions, idx) {
     }
     dz /= kernelZ.length;
 
-    return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    //return Math.sqrt(dx * dx + dy * dy + dz * dz);
+	//console.error(dx, dy, dz);
+	l = Math.sqrt(dx * dx + dy * dy + dz * dz);
+    return [dx/l, dy/l, dz/l];
 }
 
 function computeGradientForward(volumeData, volumeDimensions, idx) {
@@ -558,8 +565,8 @@ function computeGradientForward(volumeData, volumeDimensions, idx) {
         let gradientData;
         if (useGradient) {
             console.error('Computing gradient');
-            modality.components = 2;
-            gradientData = Buffer.allocUnsafe(totalCount(inputDimensions));
+            modality.components = 4;
+            gradientData = Buffer.allocUnsafe(totalCount(inputDimensions) * 3);
             for (let k = 0; k < inputDimensions.depth; k++) {
                 for (let j = 0; j < inputDimensions.height; j++) {
                     for (let i = 0; i < inputDimensions.width; i++) {
@@ -572,7 +579,10 @@ function computeGradientForward(volumeData, volumeDimensions, idx) {
                             i === inputDimensions.width  - 1 ||
                             j === inputDimensions.height - 1 ||
                             k === inputDimensions.depth  - 1) {
-                            gradientData[centerIdx] = 0;
+                            // gradientData[centerIdx] = 0;
+                            gradientData[centerIdx * 3] = 0;
+                            gradientData[centerIdx * 3 + 1] = 0;
+                            gradientData[centerIdx * 3 + 2] = 0;
                         } else {
                             let gradient = computeGradientSobel(volumeData, inputDimensions, {
                                 x: i,
@@ -580,9 +590,17 @@ function computeGradientForward(volumeData, volumeDimensions, idx) {
                                 z: k
                             });
                             // here, dividing by Math.sqrt(3) would prevent clamping in the worst case
-                            gradient = Math.round(gradient * 255);
-                            gradient = Math.min(Math.max(gradient, 0), 255);
-                            gradientData[centerIdx] = gradient;
+                            gradient[0] = Math.round(gradient[0] * 127);
+                            gradient[1] = Math.round(gradient[1] * 127);
+                            gradient[2] = Math.round(gradient[2] * 127);
+                            //gradient[0] = Math.min(Math.max(gradient[0], 0), 255);
+                            //gradient[1] = Math.min(Math.max(gradient[1], 0), 255);
+                            //gradient[2] = Math.min(Math.max(gradient[2], 0), 255);
+							// console.error(gradient);
+                            gradientData[centerIdx * 3 + 0] = gradient[0];
+                            gradientData[centerIdx * 3 + 1] = gradient[1];
+                            gradientData[centerIdx * 3 + 2] = gradient[2];
+							// console.error(gradientData.readInt8(centerIdx * 3 + 0));
                         }
                     }
                 }

@@ -21,9 +21,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-    // #section RCGenerate/fragment
+// #section RCGenerate/fragment
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 uniform mediump sampler3D uVolume;
@@ -31,6 +31,8 @@ uniform mediump sampler2D uTransferFunction;
 uniform float uStepSize;
 uniform float uOffset;
 uniform float uAlphaCorrection;  // Opacity
+uniform vec3 uLight;
+uniform vec3 uDiffuse;
 
 in vec3 vRayFrom;
 in vec3 vRayTo;
@@ -58,20 +60,35 @@ void main() {
         float t = 0.0;
         vec3 pos;
         float val;
+        vec4 voxel;
+        vec3 gradient;
         vec4 colorSample;
         vec4 accumulator = vec4(0.0);
+        vec3 light = normalize(uLight);
 
         // Sample through volume
         // Check if
         while (t < 1.0 && accumulator.a < 0.99) {
             pos = mix(from, to, t);
             // Get voxel value/intensity
-            val = texture(uVolume, pos).r;
+            voxel = texture(uVolume, pos);
+            //            val = voxel.r;
+            val = voxel.r;
+            gradient = voxel.gba;
 
+            //            vec3 normal = normalize(gradient(closest.xyz, 0.005));
+
+            float lambert = max(dot(normal, light), 0.0);
+            //            oColor = vec4(uDiffuse * lambert, 1.0);
+
+            //            oColor = vec4(uDiffuse * lambert, 1.0);
             // Map intensity from the transfer function
             colorSample = texture(uTransferFunction, vec2(val, 0.5));
             colorSample.a *= rayStepLength * uAlphaCorrection;
             colorSample.rgb *= colorSample.a;
+            colorSample.rgb *= uDiffuse;
+            colorSample *= lambert;
+
             accumulator += (1.0 - accumulator.a) * colorSample;
             t += uStepSize;
         }
@@ -84,9 +101,9 @@ void main() {
     }
 }
 
-    // #section RCIntegrate/vertex
+// #section RCIntegrate/vertex
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -97,9 +114,8 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-    // #section RCIntegrate/fragment
-
-    #version 300 es
+// #section RCIntegrate/fragment
+#version 300 es
 precision mediump float;
 
 uniform mediump sampler2D uAccumulator;
@@ -112,9 +128,9 @@ void main() {
     oColor = texture(uFrame, vPosition);
 }
 
-    // #section RCRender/vertex
+// #section RCRender/vertex
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -125,9 +141,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-    // #section RCRender/fragment
+// #section RCRender/fragment
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 uniform mediump sampler2D uAccumulator;
@@ -139,9 +155,9 @@ void main() {
     oColor = texture(uAccumulator, vPosition);
 }
 
-    // #section RCReset/vertex
+// #section RCReset/vertex
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -150,9 +166,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-    // #section RCReset/fragment
+// #section RCReset/fragment
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 out vec4 oColor;

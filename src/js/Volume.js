@@ -59,13 +59,18 @@ readModality(modalityName, handlers) {
     gl.texParameteri(gl.TEXTURE_3D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_3D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 
+
     // TODO: here read modality format & number of components, ...
     let format, internalFormat;
     if (components === 4) {
-        // Makes no sense, but so that I don't break existing code
+        console.log(4, "components");
         // Components are still 2, RGB is gradient and A is actual voxel value
+        // internalFormat = gl.FLOAT;
+        // RGBA8_SNORMRGBA8_SNORM
         internalFormat = gl.RGBA8;
         format = gl.RGBA;
+        console.log(internalFormat);
+        console.log(format);
     }
     else if (components === 2) {
         // 1st component R is voxel value
@@ -81,6 +86,7 @@ readModality(modalityName, handlers) {
     modality.placements.forEach(placement => {
         this._reader.readBlock(placement.index, {
             onData: data => {
+                console.log(data);
                 const position = placement.position;
                 const block = blocks[placement.index];
                 const blockdim = block.dimensions;
