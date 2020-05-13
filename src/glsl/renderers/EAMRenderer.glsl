@@ -69,7 +69,6 @@ void main() {
             val = texture(uVolume, pos).r;
 
             // Map intensity from the transfer function
-            // set bias to 0.5, not yet sure why
             // Alpha-blending
             colorSample = texture(uTransferFunction, vec2(val, 0.5));
             colorSample.a *= rayStepLength * uAlphaCorrection;

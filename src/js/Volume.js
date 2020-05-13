@@ -61,7 +61,15 @@ readModality(modalityName, handlers) {
 
     // TODO: here read modality format & number of components, ...
     let format, internalFormat;
-    if (components === 2) {
+    if (components === 4) {
+        // Makes no sense, but so that I don't break existing code
+        // Components are still 2, RGB is gradient and A is actual voxel value
+        internalFormat = gl.RGBA8;
+        format = gl.RGBA;
+    }
+    else if (components === 2) {
+        // 1st component R is voxel value
+        // 2nd component is gradient magnitude
         internalFormat = gl.RG8;
         format = gl.RG;
     } else {

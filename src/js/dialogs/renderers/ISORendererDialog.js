@@ -17,6 +17,7 @@ constructor(renderer, options) {
     this._binds.steps.addEventListener('input', this._handleChange);
     this._binds.isovalue.addEventListener('change', this._handleChange);
     this._binds.color.addEventListener('change', this._handleChange);
+    this._binds.position.addEventListener('input', this._handleChange);
     this._binds.direction.addEventListener('input', this._handleChange);
 }
 
@@ -28,6 +29,11 @@ _handleChange() {
     this._renderer._diffuse[0] = color.r;
     this._renderer._diffuse[1] = color.g;
     this._renderer._diffuse[2] = color.b;
+
+    const position = this._binds.position.getValue();
+    this._renderer._lightPosition[0] = position.x;
+    this._renderer._lightPosition[1] = position.y;
+    this._renderer._lightPosition[2] = position.z;
 
     const direction = this._binds.direction.getValue();
     this._renderer._light[0] = direction.x;

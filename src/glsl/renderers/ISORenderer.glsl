@@ -87,8 +87,7 @@ void main() {
 #version 300 es
 precision mediump float;
 
-layout (location = 0) in vec2 aPosition;
-
+layout(location = 0) in vec2 aPosition;
 out vec2 vPosition;
 
 void main() {
@@ -105,7 +104,6 @@ uniform mediump sampler2D uAccumulator;
 uniform mediump sampler2D uFrame;
 
 in vec2 vPosition;
-
 out vec4 oClosest;
 
 void main() {
@@ -142,6 +140,7 @@ precision mediump float;
 uniform mediump sampler2D uClosest;
 uniform mediump sampler3D uVolume;
 uniform vec3 uLight;
+uniform vec3 uLightPosition;
 uniform vec3 uDiffuse;
 
 in vec2 vPosition;

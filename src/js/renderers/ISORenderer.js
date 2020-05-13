@@ -9,10 +9,11 @@ constructor(gl, volume, environmentTexture, options) {
     super(gl, volume, environmentTexture, options);
 
     Object.assign(this, {
-        _stepSize : 0.05,
-        _isovalue : 0.4,
-        _light    : [0.5, 0.5, 0.5],
-        _diffuse  : [0.7, 0.8, 0.9]
+        _stepSize       : 0.05,
+        _isovalue       : 0.4,
+        _light          : [0.5, 0.5, 0.5],
+        _lightPosition  : [1,0, 1.0, 1.0],
+        _diffuse        : [0.7, 0.8, 0.9]
     }, options);
 
     this._programs = WebGL.buildPrograms(this._gl, {
@@ -92,6 +93,7 @@ _renderFrame() {
 
     gl.uniform1i(program.uniforms.uClosest, 0);
     gl.uniform1i(program.uniforms.uVolume, 1);
+    gl.uniform3fv(program.uniforms.uLightPosition, this._lightPosition);
     gl.uniform3fv(program.uniforms.uLight, this._light);
     gl.uniform3fv(program.uniforms.uDiffuse, this._diffuse);
 

@@ -44,6 +44,17 @@
     },
     {
       "type": "field",
+      "label": "Light position:",
+      "children": [
+        {
+          "type": "vector",
+          "bind": "position",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "type": "field",
       "label": "Light direction:",
       "children": [
         {
