@@ -23,6 +23,8 @@ class RCRendererDialog extends AbstractDialog {
         this._tfwidget = new TransferFunctionWidget();
         this._binds.tfcontainer.add(this._tfwidget);
         this._tfwidget.addEventListener('change', this._handleTFChange);
+
+        this._handleChange()
     }
 
     destroy() {

@@ -519,8 +519,8 @@ function computeGradientSobel(volumeData, volumeDimensions, idx) {
 
     //return Math.sqrt(dx * dx + dy * dy + dz * dz);
 	//console.error(dx, dy, dz);
-	l = Math.sqrt(dx * dx + dy * dy + dz * dz);
-    return [dx/l, dy/l, dz/l];
+	// l = Math.sqrt(dx * dx + dy * dy + dz * dz);
+    return [dx, dy, dz];
 }
 
 function computeGradientForward(volumeData, volumeDimensions, idx) {
@@ -589,18 +589,21 @@ function computeGradientForward(volumeData, volumeDimensions, idx) {
                                 y: j,
                                 z: k
                             });
-                            // here, dividing by Math.sqrt(3) would prevent clamping in the worst case
-                            gradient[0] = Math.round(gradient[0] * 127);
-                            gradient[1] = Math.round(gradient[1] * 127);
-                            gradient[2] = Math.round(gradient[2] * 127);
-                            //gradient[0] = Math.min(Math.max(gradient[0], 0), 255);
-                            //gradient[1] = Math.min(Math.max(gradient[1], 0), 255);
-                            //gradient[2] = Math.min(Math.max(gradient[2], 0), 255);
+                            // let minGrad = Math.min(...gradient);
+                            // let maxGrad = Math.max(...gradient);
+                            // let minMaxDiff = maxGrad - minGrad;
+                            // gradient[0] = ((gradient[0] - minGrad)/minMaxDiff) * 255;
+                            // gradient[1] = ((gradient[1] - minGrad)/minMaxDiff) * 255;
+                            // gradient[2] = ((gradient[2] - minGrad)/minMaxDiff) * 255;
+
+                            gradient[0] = (gradient[0] * 0.5 + 0.5) * 255;
+                            gradient[1] = (gradient[1] * 0.5 + 0.5) * 255;
+                            gradient[2] = (gradient[2] * 0.5 + 0.5) * 255;
+
 							// console.error(gradient);
-                            gradientData[centerIdx * 3 + 0] = gradient[0];
+                            gradientData[centerIdx * 3] = gradient[0];
                             gradientData[centerIdx * 3 + 1] = gradient[1];
                             gradientData[centerIdx * 3 + 2] = gradient[2];
-							// console.error(gradientData.readInt8(centerIdx * 3 + 0));
                         }
                     }
                 }

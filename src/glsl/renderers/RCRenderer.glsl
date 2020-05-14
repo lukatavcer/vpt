@@ -38,6 +38,12 @@ in vec3 vRayFrom;
 in vec3 vRayTo;
 out vec4 oColor;
 
+float PHI = 1.61803398874989484820459;  // Φ = Golden Ratio
+
+float gold_noise(in vec2 xy, in float seed){
+    return fract(tan(distance(xy*PHI, xy)*seed)*xy.x);
+}
+
 @intersectCube
 
 void main() {
@@ -49,7 +55,8 @@ void main() {
 
     // Check if ray is out of bounds, return black color
     if (tbounds.x >= tbounds.y) {
-        oColor = vec4(0.0, 0.0, 0.0, 1.0);
+        oColor = vec4(0.0, 0.0, 0.0, 1.0);  // black background
+        //        oColor = vec4(1.0, 1.0, 1.0, 1.0);  // white background
     } else {
         // Ray is inisde the volume, proceed with color accumulation
         // Get from and to points on the ray
@@ -65,31 +72,44 @@ void main() {
         vec4 colorSample;
         vec4 accumulator = vec4(0.0);
         vec3 light = normalize(uLight);
+        float gradMagnitude;
+
+        float offset = uOffset;
 
         // Sample through volume
         // Check if
         while (t < 1.0 && accumulator.a < 0.99) {
+
             pos = mix(from, to, t);
+            // Random offset
+//             pos = mix(from, to, offset);
+            //             pos = mix(from, to, t + 0.01 * offset);
+
             // Get voxel value/intensity
             voxel = texture(uVolume, pos);
-            //            val = voxel.r;
             val = voxel.r;
             gradient = voxel.gba;
 
-            //            vec3 normal = normalize(gradient(closest.xyz, 0.005));
+            gradient -= 0.5;
+            gradient *= 2.0;
+            gradMagnitude = length(gradient);
+            vec3 normal = normalize(gradient);
 
-            float lambert = max(dot(normal, light), 0.0);
-            //            oColor = vec4(uDiffuse * lambert, 1.0);
+            float lambertBrightness = max(dot(normal, light), 0.0);
 
-            //            oColor = vec4(uDiffuse * lambert, 1.0);
-            // Map intensity from the transfer function
-            colorSample = texture(uTransferFunction, vec2(val, 0.5));
-            colorSample.a *= rayStepLength * uAlphaCorrection;
-            colorSample.rgb *= colorSample.a;
-            colorSample.rgb *= uDiffuse;
-            colorSample *= lambert;
+            // Map intensity & color from the transfer function
+            //            float test = 1.0 - ();
+            colorSample = texture(uTransferFunction, vec2(val, min(gradMagnitude, 0.3)));
+            colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * 15.0;
+
+            //            colorSample.a *= rayStepLength * uAlphaCorrection;
+            colorSample.rgb *= colorSample.a * 2.0;
+            //            colorSample.rgb *= uDiffuse;
+//            colorSample.rgb *= lambertBrightness;
+            colorSample.rgb *= lambertBrightness *0.7;
 
             accumulator += (1.0 - accumulator.a) * colorSample;
+//            offset = mod(offset + uStepSize, 1.0);
             t += uStepSize;
         }
 
@@ -97,7 +117,9 @@ void main() {
             accumulator.rgb /= accumulator.a;
         }
 
-        oColor = vec4(accumulator.rgb, 1.0);
+        oColor = vec4(accumulator.rgb, 1.0); // black background
+        //        oColor = vec4(vec3(1.0) - accumulator.rgb, 1.0); // white bounding box
+        //        gl_FragColor = oColor;
     }
 }
 
@@ -141,9 +163,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-// #section RCRender/fragment
+    // #section RCRender/fragment
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 uniform mediump sampler2D uAccumulator;
@@ -155,9 +177,9 @@ void main() {
     oColor = texture(uAccumulator, vPosition);
 }
 
-// #section RCReset/vertex
+    // #section RCReset/vertex
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -166,9 +188,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-// #section RCReset/fragment
+    // #section RCReset/fragment
 
-#version 300 es
+    #version 300 es
 precision mediump float;
 
 out vec4 oColor;
