@@ -33,12 +33,47 @@
     },
     {
       "type": "field",
-      "label": "Color:",
+      "label": "Randomize:",
       "children": [
         {
-          "type": "color-chooser",
-          "bind": "color",
-          "value": "#ffffff"
+          "type": "checkbox",
+          "bind": "randomize",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "label": "Lights",
+      "children": [
+        {
+          "type": "field",
+          "label": "Light type:",
+          "children": [
+            {
+              "type": "dropdown",
+              "bind": "lightSelect",
+              "options": [
+                {
+                  "value": "ambient",
+                  "label": "Ambient Light",
+                  "selected": true
+                },
+                {
+                  "value": "directed",
+                  "label": "Directed Light"
+                },
+                {
+                  "value": "point",
+                  "label": "Point Light"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "panel",
+          "bind": "lightSettingsContainer"
         }
       ]
     },

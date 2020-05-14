@@ -11,8 +11,10 @@ constructor(gl, volume, environmentTexture, options) {
     Object.assign(this, {
         _stepSize        : 0.004,  // steps: 250
         _alphaCorrection : 40,
-        _light          : [9.0, 1.0, 1.0],
-        _diffuse        : [1, 0.2, 0.9]
+        _lightType       : 0,
+        _light           : [9.0, 1.0, 1.0],
+        _randomize       : false,
+        _diffuse         : [1, 0.2, 0.9]
     }, options);
 
     this._programs = WebGL.buildPrograms(this._gl, {
@@ -56,6 +58,8 @@ _generateFrame() {
     gl.uniform1i(program.uniforms.uTransferFunction, 1);
     gl.uniform1i(program.uniforms.uVolume, 0);
     gl.uniform1f(program.uniforms.uStepSize, this._stepSize);
+    gl.uniform1f(program.uniforms.uRandomize, this._randomize);
+    gl.uniform1f(program.uniforms.uLightType, this._lightType);
     gl.uniform1f(program.uniforms.uOffset, Math.random());
     gl.uniform1f(program.uniforms.uAlphaCorrection, this._alphaCorrection);
     gl.uniformMatrix4fv(program.uniforms.uMvpInverseMatrix, false, this._mvpInverseMatrix.m);

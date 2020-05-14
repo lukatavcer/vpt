@@ -32,17 +32,13 @@ uniform float uStepSize;
 uniform float uOffset;
 uniform float uAlphaCorrection;  // Opacity
 uniform vec3 uLight;
-uniform vec3 uDiffuse;
+uniform bool uRandomize;
+uniform float uLightType;
 
 in vec3 vRayFrom;
 in vec3 vRayTo;
 out vec4 oColor;
 
-float PHI = 1.61803398874989484820459;  // Φ = Golden Ratio
-
-float gold_noise(in vec2 xy, in float seed){
-    return fract(tan(distance(xy*PHI, xy)*seed)*xy.x);
-}
 
 @intersectCube
 
@@ -78,46 +74,86 @@ void main() {
 
         // Sample through volume
         // Check if
-        while (t < 1.0 && accumulator.a < 0.99) {
+        float diffMultiplier = 10.0;
+        // Ambient Lighting
+        if (uLightType == 0.0) {
+            while (t < 1.0 && accumulator.a < 0.99) {
+                // Random offset
+                if (uRandomize == true) {
+                    pos = mix(from, to, offset);
 
-            pos = mix(from, to, t);
-            // Random offset
-//             pos = mix(from, to, offset);
-            //             pos = mix(from, to, t + 0.01 * offset);
+                } else {
+                    pos = mix(from, to, t);
+                }
 
-            // Get voxel value/intensity
-            voxel = texture(uVolume, pos);
-            val = voxel.r;
-            gradient = voxel.gba;
+                // Get voxel value/intensity
+                voxel = texture(uVolume, pos);
+                val = voxel.r;
+                gradient = voxel.gba;
 
-            gradient -= 0.5;
-            gradient *= 2.0;
-            gradMagnitude = length(gradient);
-            vec3 normal = normalize(gradient);
+                gradient -= 0.5;
+                gradient *= 2.0;
+                gradMagnitude = length(gradient);
+                vec3 normal = normalize(gradient);
 
-            float lambertBrightness = max(dot(normal, light), 0.0);
+                // Map intensity & color from the transfer function
+                colorSample = texture(uTransferFunction, vec2(val, gradMagnitude));
+                colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * 8.0;
 
-            // Map intensity & color from the transfer function
-            //            float test = 1.0 - ();
-            colorSample = texture(uTransferFunction, vec2(val, min(gradMagnitude, 0.3)));
-            colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * 15.0;
+                colorSample.rgb *= colorSample.a;
 
-            //            colorSample.a *= rayStepLength * uAlphaCorrection;
-            colorSample.rgb *= colorSample.a * 2.0;
-            //            colorSample.rgb *= uDiffuse;
-//            colorSample.rgb *= lambertBrightness;
-            colorSample.rgb *= lambertBrightness *0.7;
+                accumulator += (1.0 - accumulator.a) * colorSample;
+                offset = mod(offset + uStepSize, 1.0);
+                t += uStepSize;
+            }
+        } else if (uLightType == 1.0) {
+            // Directed Light
+            while (t < 1.0 && accumulator.a < 0.99) {
+                // Random offset
+                if (uRandomize == true) {
+                    pos = mix(from, to, offset);
 
-            accumulator += (1.0 - accumulator.a) * colorSample;
-//            offset = mod(offset + uStepSize, 1.0);
-            t += uStepSize;
+                } else {
+                    pos = mix(from, to, t);
+                }
+
+                // Get voxel value/intensity
+                voxel = texture(uVolume, pos);
+                val = voxel.r;
+                gradient = voxel.gba;
+
+                gradient -= 0.5;
+                gradient *= 2.0;
+                gradMagnitude = length(gradient);
+                vec3 normal = normalize(gradient);
+                float lambert = max(dot(normal, light), 0.15);
+
+                // Map intensity & color from the transfer function
+                float koef = 1.0 - (exp(-0.5 * gradMagnitude));
+                colorSample = texture(uTransferFunction, vec2(val, gradMagnitude));
+                if (lambert < 0.1) {
+                    colorSample.a *= (rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier) / 0.95;
+                } else {
+                    colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
+                }
+
+                colorSample.rgb *= colorSample.a * diffMultiplier;
+                colorSample.rgb *= lambert;
+
+                accumulator += (1.0 - accumulator.a) * colorSample;
+                offset = mod(offset + uStepSize, 1.0);
+                t += uStepSize;
+            }
+        } else if (uLightType == 2.0) {
+            // Point Light
+
         }
 
         if (accumulator.a > 1.0) {
             accumulator.rgb /= accumulator.a;
         }
 
-        oColor = vec4(accumulator.rgb, 1.0); // black background
+        oColor = vec4(accumulator.rgb, 1.0); // black bounding box
         //        oColor = vec4(vec3(1.0) - accumulator.rgb, 1.0); // white bounding box
         //        gl_FragColor = oColor;
     }
@@ -163,9 +199,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-    // #section RCRender/fragment
+// #section RCRender/fragment
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 uniform mediump sampler2D uAccumulator;
@@ -177,9 +213,9 @@ void main() {
     oColor = texture(uAccumulator, vPosition);
 }
 
-    // #section RCReset/vertex
+// #section RCReset/vertex
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 layout(location = 0) in vec2 aPosition;
@@ -188,9 +224,9 @@ void main() {
     gl_Position = vec4(aPosition, 0.0, 1.0);
 }
 
-    // #section RCReset/fragment
+// #section RCReset/fragment
 
-    #version 300 es
+#version 300 es
 precision mediump float;
 
 out vec4 oColor;
