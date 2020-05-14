@@ -33,12 +33,12 @@
     },
     {
       "type": "field",
-      "label": "Randomize:",
+      "label": "Randomize Sampling:",
       "children": [
         {
           "type": "checkbox",
           "bind": "randomize",
-          "checked": false
+          "checked": true
         }
       ]
     },
@@ -74,17 +74,6 @@
         {
           "type": "panel",
           "bind": "lightSettingsContainer"
-        }
-      ]
-    },
-    {
-      "type": "field",
-      "label": "Light direction:",
-      "children": [
-        {
-          "type": "vector",
-          "bind": "direction",
-          "value": 1
         }
       ]
     },

@@ -173,6 +173,7 @@ chooseToneMapper(toneMapper) {
     this._toneMapper = new toneMapperClass(gl, texture);
 }
 
+
 getCanvas() {
     return this._canvas;
 }

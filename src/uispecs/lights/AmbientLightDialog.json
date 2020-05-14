@@ -1,6 +1,6 @@
 // #package uispecs
 
-// #section DirectedLightDialog
+// #section AmbientLightDialog
 
 {
   "type": "panel",

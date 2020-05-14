@@ -23,6 +23,8 @@ constructor(gl, volume, environmentTexture, options) {
         render    : SHADERS.RCRender,
         reset     : SHADERS.RCReset
     }, MIXINS);
+
+    this._frameNumber = 1;
 }
 
 destroy() {
@@ -41,6 +43,8 @@ _resetFrame() {
     gl.useProgram(program.program);
 
     gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
+
+    this._frameNumber = 1;
 }
 
 _generateFrame() {
@@ -48,13 +52,26 @@ _generateFrame() {
 
     const program = this._programs.generate;
     gl.useProgram(program.program);
-    gl.uniform3fv(program.uniforms.uLight, this._light);
+    let direction;
+    if (this._lightType === 0) {
+        direction = [1.0, 1.0, 1.0]
+    } else if (this._lightType === 1) {
+        direction = this._lightObject.direction;
+    } else if (this._lightType === 2) {
+        direction = this._lightObject.direction;
+    }
+
+    console.log(this._lightType);
+    console.log(direction);
+    gl.uniform3fv(program.uniforms.uLight, direction);
 
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_3D, this._volume.getTexture());
     gl.activeTexture(gl.TEXTURE1);
     gl.bindTexture(gl.TEXTURE_2D, this._transferFunction);
 
+    // console.log("this._lightObject");
+    // console.log(this._lightObject);
     gl.uniform1i(program.uniforms.uTransferFunction, 1);
     gl.uniform1i(program.uniforms.uVolume, 0);
     gl.uniform1f(program.uniforms.uStepSize, this._stepSize);
@@ -80,8 +97,11 @@ _integrateFrame() {
 
     gl.uniform1i(program.uniforms.uAccumulator, 0);
     gl.uniform1i(program.uniforms.uFrame, 1);
+    gl.uniform1f(program.uniforms.uInvFrameNumber, 1 / this._frameNumber);
 
     gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
+
+    this._frameNumber += 1;
 }
 
 _renderFrame() {

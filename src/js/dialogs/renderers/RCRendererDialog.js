@@ -4,6 +4,8 @@
 // #include ../../TransferFunctionWidget.js
 
 // #include ../../../uispecs/renderers/RCRendererDialog.json
+// #include ../../lights
+// #include ../lights
 
 class RCRendererDialog extends AbstractDialog {
 
@@ -21,7 +23,7 @@ class RCRendererDialog extends AbstractDialog {
         this._binds.opacity.addEventListener('input', this._handleChange);
         this._binds.randomize.addEventListener('change', this._handleFilterChange);
         this._binds.lightSelect.addEventListener('change', this._handleLightChange);
-        this._binds.direction.addEventListener('input', this._handleChange);
+        // this._binds.direction.addEventListener('input', this._handleChange);
 
         this._tfwidget = new TransferFunctionWidget();
         this._binds.tfcontainer.add(this._tfwidget);
@@ -46,10 +48,10 @@ class RCRendererDialog extends AbstractDialog {
         // this._renderer._diffuse[1] = color.g;
         // this._renderer._diffuse[2] = color.b;
 
-        const direction = this._binds.direction.getValue();
-        this._renderer._light[0] = direction.x;
-        this._renderer._light[1] = direction.y;
-        this._renderer._light[2] = direction.z;
+        // const direction = this._binds.direction.getValue();
+        // this._renderer._light[0] = direction.x;
+        // this._renderer._light[1] = direction.y;
+        // this._renderer._light[2] = direction.z;
 
         this._renderer.reset();
     }
@@ -65,8 +67,9 @@ class RCRendererDialog extends AbstractDialog {
 
     _getLightClass(light) {
         switch (light) {
+            case 'ambient'    : return AmbientLight;
             case 'directed' : return DirectedLight;
-            case 'point'    : return DirectedLight;
+            case 'point' : return PointLight;
         }
     }
 
@@ -79,9 +82,51 @@ class RCRendererDialog extends AbstractDialog {
         }
     }
 
+    // _handleLightChange() {
+    //     const light = this.getSelectedLight();
+    //     console.log(light);
+    //     this._renderer._lightType = light;
+    // }
+
     _handleLightChange() {
-        const light = this.getSelectedLight();
-        console.log(light);
-        this._renderer._lightType = light;
+        if (this._lightDialog) {
+            this._lightDialog.destroy();
+        }
+        const which = this._binds.lightSelect.getValue();
+
+        this.chooseLight(which);
+        const light = this.getLight();
+        const container = this.getLightSettingsContainer();
+        const dialogClass = this._getDialogForLight(which);
+        this._lightDialog = new dialogClass(light);
+        this._lightDialog.appendTo(container);
+
+        this._renderer._lightType = this.getSelectedLight();
+
+    }
+
+    _getDialogForLight(light) {
+        switch (light) {
+            case 'ambient'  : return AmbientLightDialog;
+            case 'directed' : return DirectedLightDialog;
+            case 'point' : return PointLightDialog;
+        }
+    }
+
+    getLightSettingsContainer() {
+        return this._binds.lightSettingsContainer;
+    }
+
+    chooseLight(light) {
+        if (this._light) {
+            this._light.destroy();
+        }
+        const lightClass = this._getLightClass(light);
+        this._light = new lightClass(this._renderer);
+        this._renderer._lightObject = this._light;
+    }
+
+    getLight() {
+        return this._light;
     }
 }
