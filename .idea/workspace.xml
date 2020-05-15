@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ed03914e-982b-48d7-b922-0eef519d3f3f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/raw2bvp_old.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/glsl/renderers/RCRenderer.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/glsl/renderers/RCRenderer.glsl" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="vpt" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/glsl/renderers/MIPRenderer.glsl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="49" column="30" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/renderers/RCRenderer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="24" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/glsl/renderers/RCRenderer.glsl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/dialogs/renderers/RCRendererDialog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/lights/AmbientLight.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/dialogs/lights/PointLightDialog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/lights/PointLight.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uispecs/lights/PointLightDialog.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="14" column="27" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/lights/DirectedLight.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/demo-volumes.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uispecs/renderers/RCRendererDialog.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/dialogs/VolumeLoadDialog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>_getLightClass</find>
+      <find>AmbientLight</find>
+      <find>getLightClass</find>
+      <find>_lightObject</find>
+      <find>_light</find>
+      <find>uLight</find>
+      <find>resetRenderer()</find>
+      <find>normalize</find>
+      <find>uDiffuse</find>
+      <find>slider</find>
+      <find>ratio</find>
+      <find>lightDirection</find>
+      <find>attenuation</find>
+      <find>setAttenuation</find>
+      <find>this._light.setColo</find>
+      <find>uLightAttenuation</find>
+      <find>_reflectionModel</find>
+      <find>uLightType</find>
+      <find>diffMultiplier</find>
+      <find>Ray Casting</find>
+      <find>ambColor</find>
+      <find>koef</find>
+      <find>_handleLightChange</find>
+      <find>_alphaCorrection</find>
+      <find>colorSample</find>
+      <find>uLightColor</find>
+      <find>Color:&quot;</find>
+      <find>opacity</find>
+      <find>bounding</find>
+      <find>intersectCube</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&quot;url&quot;: &quot;http://lgm.fri.uni-lj.si/~ziga/vpt/</replace>
+      <replace>bvp/</replace>
+      <replace>RC</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/raw</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/build/demo-envmaps.json" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/renderers/MIPRendererDialog.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/uispecs/renderers/ISORendererDialog.json" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/renderers/ISORendererDialog.js" />
+        <option value="$PROJECT_DIR$/src/js/WebGL.js" />
+        <option value="$PROJECT_DIR$/src/glsl/renderers/ISORenderer.glsl" />
+        <option value="$PROJECT_DIR$/src/glsl/renderers/EAMRenderer.glsl" />
+        <option value="$PROJECT_DIR$/src/js/renderers/EAMRenderer.js" />
+        <option value="$PROJECT_DIR$/src/js/DoubleBuffer.js" />
+        <option value="$PROJECT_DIR$/src/js/SingleBuffer.js" />
+        <option value="$PROJECT_DIR$/raw2bvp" />
+        <option value="$PROJECT_DIR$/src/js/Volume.js" />
+        <option value="$PROJECT_DIR$/src/js/renderers/ISORenderer.js" />
+        <option value="$PROJECT_DIR$/raw2bvp.js" />
+        <option value="$PROJECT_DIR$/src/js/renderers/AbstractRenderer.js" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/tonemappers/ArtisticToneMapperDialog.js" />
+        <option value="$PROJECT_DIR$/src/js/main.js" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/MainDialog.js" />
+        <option value="$PROJECT_DIR$/src/uispecs/tonemappers/ArtisticToneMapperDialog.json" />
+        <option value="$PROJECT_DIR$/build/js/main.js" />
+        <option value="$PROJECT_DIR$/src/js/Application.js" />
+        <option value="$PROJECT_DIR$/src/js/RenderingContext.js" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/VolumeLoadDialog.js" />
+        <option value="$PROJECT_DIR$/src/uispecs/VolumeLoadDialog.json" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/lights/AmbientLightDialog.js" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/lights/DirectedLightDialog.js" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/lights/PointLightDialog.js" />
+        <option value="$PROJECT_DIR$/src/js/dialogs/renderers/RCRendererDialog.js" />
+        <option value="$PROJECT_DIR$/src/uispecs/MainDialog.json" />
+        <option value="$PROJECT_DIR$/src/uispecs/renderers/RCRendererDialog.json" />
+        <option value="$PROJECT_DIR$/src/js/renderers/RCRenderer.js" />
+        <option value="$PROJECT_DIR$/src/js/lights/PointLight.js" />
+        <option value="$PROJECT_DIR$/src/uispecs/lights/PointLightDialog.json" />
+        <option value="$PROJECT_DIR$/src/uispecs/lights/DirectedLightDialog.json" />
+        <option value="$PROJECT_DIR$/src/uispecs/lights/AmbientLightDialog.json" />
+        <option value="$PROJECT_DIR$/src/js/lights/DirectedLight.js" />
+        <option value="$PROJECT_DIR$/src/js/lights/AmbientLight.js" />
+        <option value="$PROJECT_DIR$/src/glsl/renderers/RCRenderer.glsl" />
+        <option value="$PROJECT_DIR$/build/demo-volumes.json" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1919" />
+    <option name="width" value="1922" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="vpt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vpt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vpt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vpt" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vpt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vpt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rendered_images" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="Console" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/build/bvp" />
+      <recent name="$PROJECT_DIR$/src/uispecs/lights" />
+      <recent name="$PROJECT_DIR$/src/js/dialogs/lights" />
+      <recent name="$PROJECT_DIR$/src/js/lights" />
+      <recent name="$PROJECT_DIR$/src/js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/build/bvp" />
+      <recent name="$PROJECT_DIR$/src/bvp/grad_magnitude" />
+      <recent name="$PROJECT_DIR$/build" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="debug" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start-ndoe" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start-ndoe" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start-node" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start-node" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="build" run_configuration_type="js.build_tools.npm" />
+      </method>
+    </configuration>
+    <configuration name="start:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2">
+        <option name="NpmBeforeRunTask" enabled="true">
+          <package-json value="$PROJECT_DIR$/package.json" />
+          <command value="run" />
+          <scripts>
+            <script value="build" />
+          </scripts>
+          <node-interpreter value="project" />
+          <envs />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.debug" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.start-ndoe" />
+      <item itemvalue="npm.start-node" />
+      <item itemvalue="npm.start:dev" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.start-node" />
+        <item itemvalue="npm.start-ndoe" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed03914e-982b-48d7-b922-0eef519d3f3f" name="Default Changelist" comment="" />
+      <created>1589027408444</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589027408444</updated>
+      <workItem from="1589027409586" duration="15376000" />
+      <workItem from="1589187359395" duration="9420000" />
+      <workItem from="1589212090198" duration="4316000" />
+      <workItem from="1589229528116" duration="5447000" />
+      <workItem from="1589303119325" duration="14238000" />
+      <workItem from="1589356215316" duration="33658000" />
+      <workItem from="1589447558684" duration="46165000" />
+      <workItem from="1589536083528" duration="24032000" />
+    </task>
+    <task id="LOCAL-00001" summary="Ignore &amp; Nodemon">
+      <created>1589201209144</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589201209144</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Comments">
+      <created>1589231594736</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589231594737</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Light pos &amp; raw2bvp &amp; teapot raw">
+      <created>1589368355614</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589368355614</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Light &amp; stuff shading">
+      <created>1589407401422</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589407401422</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Direct + lambert">
+      <created>1589473221966</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589473221966</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Different lights">
+      <created>1589490312232</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1589490312232</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Light changing UI">
+      <created>1589499866488</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589499866488</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Light changing UI">
+      <created>1589537908463</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589537908463</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Light &amp; material color blend">
+      <created>1589539781020</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1589539781021</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Point Light attenuation">
+      <created>1589541609783</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1589541609783</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Lighting parameters">
+      <created>1589578679091</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589578679091</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="152652000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1919" y="0" width="1922" height="1080" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4993046" visible="true" weight="0.18924618" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.5006954" side_tool="true" weight="0.18713759" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32983193" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14810924" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24474789" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.4947479" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.14495799" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497332" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993046" weight="0.18943436" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.5006954" side_tool="true" weight="0.18713759" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32983193" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14810924" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24474789" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.4947479" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2657563" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2497332" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ignore &amp; Nodemon" />
+    <MESSAGE value="Comments" />
+    <MESSAGE value="Light pos &amp; raw2bvp &amp; teapot raw" />
+    <MESSAGE value="Light &amp; stuff shading" />
+    <MESSAGE value="Direct + lambert" />
+    <MESSAGE value="Different lights" />
+    <MESSAGE value="Light changing UI" />
+    <MESSAGE value="Light &amp; material color blend" />
+    <MESSAGE value="Point Light attenuation" />
+    <MESSAGE value="Lighting parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lighting parameters" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/bin/server-node</url>
+          <line>42</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/dialogs/VolumeLoadDialog.js</url>
+          <line>46</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/dialogs/VolumeLoadDialog.js</url>
+          <line>33</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/Application.js</url>
+          <line>96</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/renderers/MIPRenderer.js</url>
+          <line>14</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/renderers/MIPRenderer.js</url>
+          <line>10</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/Application.js</url>
+          <line>23</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/Volume.js</url>
+          <line>30</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/readers/BVPReader.js</url>
+          <line>34</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/js/Volume.js</url>
+          <line>86</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/glsl/renderers/EAMRenderer.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="61" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/AbstractDialog.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/renderers/EAMRenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="102" column="41" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/renderers/ISORenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="83" column="24" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glsl/renderers/ISORenderer.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="67" column="34" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/bvp/baby_grad.bvp" />
+    <entry file="file://$PROJECT_DIR$/build/bvp/baby_grad.bvp">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/renderers/MIPRendererDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uispecs/renderers/MIPRendererDialog.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="2709" column="4" selection-start-line="2709" selection-start-column="4" selection-end-line="2709" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/lights/RangeToneMapperDialog.js" />
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/tonemappers/ArtisticToneMapperDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uispecs/MainDialog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="822">
+          <caret line="102" column="14" selection-start-line="68" selection-start-column="12" selection-end-line="102" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/tonemappers/ReinhardToneMapper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/raw2bvp_old.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="611" column="74" selection-start-line="611" selection-start-column="74" selection-end-line="611" selection-end-column="74" />
+          <folding>
+            <element signature="n#!!block;n#generateCrc32Table#0" />
+            <element signature="n#!!block;n#crc32#0" />
+            <element signature="n#!!block;n#createLocalFileHeader#0" />
+            <element signature="n#!!block;n#createCentralDirectoryFileHeader#0" />
+            <element signature="n#!!block;n#linearize#0" />
+            <element signature="n#!!block;n#readInputData#0" />
+            <element signature="n#!!block;n#computeGradientSobel#0" />
+            <element signature="n#!!block;n#computeGradientForward#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="1883" selection-start-line="1883" selection-end-line="1883" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uispecs/tonemappers/ArtisticToneMapperDialog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/RenderingContextDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="75" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/EventEmitter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/MainDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glsl/renderers/MCSRenderer.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="165" selection-start-line="165" selection-end-line="165" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/renderers/MCSRenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="95" column="49" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/tonemappers/RangeToneMapper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/lights/AbstractToneMapper.js" />
+    <entry file="file://$PROJECT_DIR$/src/js/lights/RangeToneMapper.js" />
+    <entry file="file://$PROJECT_DIR$/src/js/tonemappers/AbstractToneMapper.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/Application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/RenderingContext.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uispecs/lights/DirectedLightDialog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uispecs/lights/AmbientLightDialog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/raw2bvp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8115">
+          <caret line="612" column="53" selection-start-line="612" selection-start-column="53" selection-end-line="612" selection-end-column="53" />
+          <folding>
+            <element signature="e#13348#13536#0" />
+            <element signature="e#13556#13744#0" />
+            <element signature="e#13764#13952#0" />
+            <element signature="e#13971#14132#0" />
+            <element signature="n#!!block;n#computeGradientForward#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/renderers/AbstractRenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/VolumeLoadDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="72" selection-start-line="24" selection-start-column="72" selection-end-line="24" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/lights/DirectedLightDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/lights/AmbientLightDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/renderers/MCMRendererDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="20" column="69" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uispecs/renderers/RCRendererDialog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/renderers/RCRendererDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/renderers/RCRenderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/bvp/tooth2.bvp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/bvp/tooth-new3.bvp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/dialogs/lights/PointLightDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uispecs/lights/PointLightDialog.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/lights/PointLight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/lights/DirectedLight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/lights/AmbientLight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/bvp/frog-new.bvp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/demo-volumes.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glsl/renderers/MIPRenderer.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/glsl/renderers/RCRenderer.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

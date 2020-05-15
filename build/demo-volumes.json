@@ -1,0 +1,17 @@
+[
+  {
+    "value": "tooth-new4",
+    "label": "Tooth",
+    "url": "bvp/tooth-new4.bvp"
+  },
+  {
+    "value": "frog-new",
+    "label": "Frog",
+    "url": "bvp/frog-new.bvp"
+  },
+  {
+    "value": "baby-grad2",
+    "label": "Baby",
+    "url": "bvp/baby_grad.bvp"
+  }
+]

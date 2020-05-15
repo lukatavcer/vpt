@@ -222,7 +222,7 @@ void main() {
                     // vec4(ambientColor + lambert* diffuseColor + specular*specColor, 1.0);
                     // Hardcoded spec color & intensity
 //                    colorSample.rgb += specular*(colorSample.rgb+vec3(0.2)) * 0.9;
-                    colorSample.rgb += specular*(mix(colorSample.rgb, vec3(0.8), 0.5)) * 0.9;
+                    colorSample.rgb += specular*(mix(colorSample.rgb, vec3(0.5), 0.2)) * 0.9;
                 }
 
                 // Increase alpha on parts that are more shaded (make them less transparent)
