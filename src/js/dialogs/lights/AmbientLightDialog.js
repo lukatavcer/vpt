@@ -6,10 +6,10 @@
 
 class AmbientLightDialog extends AbstractDialog {
 
-constructor(renderer, options) {
+constructor(light, options) {
     super(UISPECS.AmbientLightDialog, options);
 
-    this._renderer = renderer;
+    this._light = light;
     this._handleChange = this._handleChange.bind(this);
 
     this._binds.color.addEventListener('change', this._handleChange);

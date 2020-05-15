@@ -104,7 +104,8 @@ void main() {
                 colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * 8.0;
 
                 colorSample.rgb *= colorSample.a;
-                colorSample.rgb *= uLightColor;
+//                colorSample.rgb *= uLightColor;
+                colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
 
                 accumulator += (1.0 - accumulator.a) * colorSample;
                 offset = mod(offset + uStepSize, 1.0);
@@ -136,16 +137,8 @@ void main() {
 
                 // Map intensity & color from the transfer function
                 colorSample = texture(uTransferFunction, vec2(val, gradMagnitude));
-                colorSample.rgb =  uLightColor;
 
-                // Reduce alpha on parts that are more shaded and make them darker
-//                if (lambert < 0.1) {
-//                    colorSample.a *= (rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier) / 0.95;
-//                } else {
-//                    colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
-//                }
-
-                // Increase alpha on parts that are more shaded
+                // Increase alpha on parts that are more shaded (make them less transparent)
                 if (lambert > 0.5) {
 //                if (lambert > 0.6 && gradMagnitude < 0.3) {
                     colorSample.a *= (rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier) * 1.5;
@@ -154,8 +147,9 @@ void main() {
                 }
 
                 colorSample.rgb *= colorSample.a;
-                colorSample.rgb *= uLightColor;
-//                colorSample.rgb *= colorSample.a * diffMultiplier;
+
+                // Mix light color with the material (transfer function) color
+                colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
                 colorSample.rgb *= lambert;
 
                 accumulator += (1.0 - accumulator.a) * colorSample;
@@ -191,16 +185,19 @@ void main() {
                 // Map intensity & color from the transfer function
                 float koef = 1.0 - (exp(-0.5 * gradMagnitude));
                 colorSample = texture(uTransferFunction, vec2(val, gradMagnitude));
-//                if (lambert < 0.1) {
-//                    colorSample.a *= (rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier) / 0.95;
-//                } else {
-//                    colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
-//                }
-                colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
+
+                // Increase alpha on parts that are more shaded (make them less transparent)
+                if (lambert > 0.5) {
+                    //                if (lambert > 0.6 && gradMagnitude < 0.3) {
+                    colorSample.a *= (rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier) * 1.5;
+                } else {
+                    colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
+                }
 
                 colorSample.rgb *= colorSample.a;
-                colorSample.rgb *= uLightColor;
-//                colorSample.rgb *= colorSample.a * diffMultiplier;
+
+                // Mix light color with the material (transfer function) color
+                colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
                 colorSample.rgb *= lambert;
 
                 accumulator += (1.0 - accumulator.a) * colorSample;

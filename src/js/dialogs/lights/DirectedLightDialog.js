@@ -13,6 +13,7 @@ constructor(light, options) {
     this._handleChange = this._handleChange.bind(this);
 
     this._binds.direction.addEventListener('input', this._handleChange);
+    this._binds.color.addEventListener('change', this._handleChange);
 }
 
 _handleChange() {
@@ -20,7 +21,6 @@ _handleChange() {
     this._light.setDirection(direction);
 
     const color = CommonUtils.hex2rgb(this._binds.color.getValue());
-    console.log(color);
     this._light.setColor(color);
 
     this._light.resetRenderer()

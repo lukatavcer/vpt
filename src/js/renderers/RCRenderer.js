@@ -15,7 +15,6 @@ constructor(gl, volume, environmentTexture, options) {
         _lightType       : 0,
         _light     : new AmbientLight(),
         _randomize       : false,
-        _diffuse         : [1, 0.2, 0.9]
     }, options);
 
     this._programs = WebGL.buildPrograms(this._gl, {

@@ -16,9 +16,9 @@ resetRenderer() {
 }
 
 setPosition(position) {
-    this.position[0] = direction.x;
-    this.position[1] = direction.y;
-    this.position[2] = direction.z;
+    this.position[0] = position.x;
+    this.position[1] = position.y;
+    this.position[2] = position.z;
 }
 
 setColor(color) {

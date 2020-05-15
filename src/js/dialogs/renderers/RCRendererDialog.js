@@ -30,6 +30,7 @@ class RCRendererDialog extends AbstractDialog {
 
         this._handleChange();
         this._handleFilterChange();
+        this._handleLightChange();
 
     }
 
