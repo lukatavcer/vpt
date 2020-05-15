@@ -7,7 +7,7 @@ constructor(renderer) {
 
     Object.assign(this, {
         direction   : [1.0, 1.0, 1.0],
-        color       : [1.0, 1.0, 1.0],
+        color       : [0.3, 0.3, 0.3],
     });
 }
 

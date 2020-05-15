@@ -15,6 +15,7 @@ constructor(light, options) {
     this._binds.color.addEventListener('change', this._handleChange);
     this._binds.position.addEventListener('input', this._handleChange);
     this._binds.attenuation.addEventListener('change', this._handleChange);
+    this._binds.intensity.addEventListener('change', this._handleChange);
 
 }
 
@@ -27,7 +28,9 @@ constructor(light, options) {
 
         const attenuation = this._binds.attenuation.getValue();
         this._light.setAttenuation(attenuation);
-        console.log(attenuation);
+
+        const intensity = this._binds.intensity.getValue();
+        this._light.setIntensity(intensity);
 
         this._light.resetRenderer()
     }

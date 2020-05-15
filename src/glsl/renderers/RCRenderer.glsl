@@ -32,10 +32,12 @@ uniform float uStepSize;
 uniform float uOffset;
 uniform float uAlphaCorrection;  // Opacity
 uniform bool uRandomize;
+uniform float uReflectionModel;
 uniform vec3 uLight;  // Position or direction
 uniform float uLightType;
 uniform vec3 uLightColor;
 uniform float uLightAttenuation;
+uniform float uLightIntensity;
 
 
 in vec3 vRayFrom;
@@ -65,14 +67,18 @@ void main() {
 
         float t = 0.0;
         vec3 pos;
-        float val;
         vec4 voxel;
+        float val;
         vec3 gradient;
+        float gradMagnitude;
         vec4 colorSample;
         vec4 accumulator = vec4(0.0);
         vec3 light = uLight;
-        float gradMagnitude;
 
+        // Phong parameters
+        vec3 specColor = vec3(1.0, 1.0, 1.0);
+
+        // Random sampling offset
         float offset = uOffset;
 
         // Sample through volume
@@ -80,7 +86,7 @@ void main() {
         float diffMultiplier = 32.0;
         // Ambient Lighting
         if (uLightType == 0.0) {
-            diffMultiplier /= 2.0;
+            diffMultiplier /= 4.0;
 
             while (t < 1.0 && accumulator.a < 0.99) {
                 // Random offset
@@ -98,14 +104,12 @@ void main() {
                 gradient -= 0.5;
                 gradient *= 2.0;
                 gradMagnitude = length(gradient);
-                vec3 normal = normalize(gradient);
 
                 // Map intensity & color from the transfer function
                 colorSample = texture(uTransferFunction, vec2(val, gradMagnitude));
-                colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * 8.0;
+                colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
 
                 colorSample.rgb *= colorSample.a;
-//                colorSample.rgb *= uLightColor;
                 colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
 
                 accumulator += (1.0 - accumulator.a) * colorSample;
@@ -139,19 +143,32 @@ void main() {
                 // Map intensity & color from the transfer function
                 colorSample = texture(uTransferFunction, vec2(val, gradMagnitude));
 
+                // Mix light color (diffuse) with the material (transfer function) color
+//                colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
+                 colorSample.rgb += uLightColor;
+                 colorSample.rgb *= lambert;
+
+                if (uReflectionModel == 1.0) {
+                    // Phong
+                    vec3 reflectDir = reflect(-light, normal);
+                    vec3 viewDir = normalize(-pos);
+                    float specular = 0.0;
+
+                    if (lambert > 0.0) {
+                        float specAngle = max(dot(reflectDir, viewDir), 0.0);
+                        specular = pow(specAngle, 4.0);
+                    }
+
+                    // vec4(ambientColor + lambert* diffuseColor + specular*specColor, 1.0);
+                    // Hardcoded spec color & intensity, make it whiter
+                    colorSample.rgb += specular*(mix(colorSample.rgb, vec3(0.8), 0.5)) * 0.9;
+                }
                 // Increase alpha on parts that are more shaded (make them less transparent)
                 if (lambert > 0.5) {
-//                if (lambert > 0.6 && gradMagnitude < 0.3) {
-                    colorSample.a *= (rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier) * 1.5;
-                } else {
-                    colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
+                    colorSample.a *=  1.5;
                 }
-
+                colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
                 colorSample.rgb *= colorSample.a;
-
-                // Mix light color with the material (transfer function) color
-                colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
-                colorSample.rgb *= lambert;
 
                 accumulator += (1.0 - accumulator.a) * colorSample;
                 offset = mod(offset + uStepSize, 1.0);
@@ -187,22 +204,40 @@ void main() {
                 float koef = 1.0 - (exp(-0.5 * gradMagnitude));
                 colorSample = texture(uTransferFunction, vec2(val, gradMagnitude));
 
-                // Increase alpha on parts that are more shaded (make them less transparent)
-                if (lambert > 0.5) {
-                    //                if (lambert > 0.6 && gradMagnitude < 0.3) {
-                    colorSample.a *= (rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier) * 1.5;
-                } else {
-                    colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
+                // Mix light color with the material (transfer function) color
+//                colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
+                colorSample.rgb += uLightColor;
+                colorSample.rgb *= lambert;
+                if (uReflectionModel == 1.0) {
+                    // Phong
+                    vec3 reflectDir = reflect(-light, normal);
+                    vec3 viewDir = normalize(-pos);
+                    float specular = 0.0;
+
+                    if (lambert > 0.0) {
+                        float specAngle = max(dot(reflectDir, viewDir), 0.0);
+                        specular = pow(specAngle, 4.0);
+                    }
+
+                    // vec4(ambientColor + lambert* diffuseColor + specular*specColor, 1.0);
+                    // Hardcoded spec color & intensity
+//                    colorSample.rgb += specular*(colorSample.rgb+vec3(0.2)) * 0.9;
+                    colorSample.rgb += specular*(mix(colorSample.rgb, vec3(0.8), 0.5)) * 0.9;
                 }
 
+                // Increase alpha on parts that are more shaded (make them less transparent)
+                if (lambert > 0.5) {
+                    colorSample.a *=  1.5;
+                }
+                colorSample.a *= rayStepLength * uAlphaCorrection * gradMagnitude * diffMultiplier;
                 colorSample.rgb *= colorSample.a;
 
-                // Mix light color with the material (transfer function) color
-                colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
-                colorSample.rgb *= lambert;
-
                 float d = length(lightDirection);
-                float attenuation = clamp( uLightAttenuation / d, 0.0, 1.0);
+
+                // Smooth attenuation
+                // float attenuation = 1.0 / ((1.0 - uLightIntensity) + 1.0*d + uLightAttenuation*d*d);
+                float attenuation = 1.0 / (0.2 + (1.0 - uLightIntensity)*d + uLightAttenuation*d*d);
+
                 colorSample.rgb *= attenuation;
 
                 accumulator += (1.0 - accumulator.a) * colorSample;
@@ -219,7 +254,11 @@ void main() {
         //        oColor = vec4(vec3(1.0) - accumulator.rgb, 1.0); // white bounding box
         //        gl_FragColor = oColor;
         // Debug light color
-//        oColor = vec4(uLightColor, 1.0);;
+//        if (uReflectionModel == 0.0) {
+//            oColor = vec4(0.0, 0.0, 1.0, 1.0);
+//        } else if (uReflectionModel == 1.0) {
+//            oColor = vec4(1.0, 1.0, 1.0, 1.0);
+//        }
     }
 }
 

@@ -7,8 +7,9 @@ constructor(renderer) {
 
     Object.assign(this, {
         position    : [1.0, 1.0, 1.0],
-        color       : [1.0, 1.0, 1.0],
-        attenuation : 1.0
+        color       : [0.3, 0.3, 0.3],
+        attenuation : 0.15,
+        intensity : 0.7,
     });
 }
 
@@ -30,6 +31,10 @@ setColor(color) {
 
 setAttenuation(attenuation) {
     this.attenuation = attenuation;
+}
+
+setIntensity(intensity) {
+    this.intensity = intensity;
 }
 
 destroy() {

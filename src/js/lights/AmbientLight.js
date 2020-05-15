@@ -6,7 +6,7 @@ constructor(renderer) {
     this._renderer = renderer;
 
     Object.assign(this, {
-        color: [1.0, 1.0, 1.0]
+        color: [0.3, 0.3, 0.3],
     });
 }
 

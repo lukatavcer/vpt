@@ -41,7 +41,7 @@
                       "options": [
                         {
                           "value": "rc",
-                          "label": "Ray Casting (EAM)",
+                          "label": "Ray Casting",
                           "selected": true
                         },
                         {

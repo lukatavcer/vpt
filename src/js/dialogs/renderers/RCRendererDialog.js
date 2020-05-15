@@ -18,10 +18,12 @@ class RCRendererDialog extends AbstractDialog {
         this._handleTFChange = this._handleTFChange.bind(this);
         this._handleFilterChange = this._handleFilterChange.bind(this);
         this._handleLightChange = this._handleLightChange.bind(this);
+        this._handleReflectionModelChange = this._handleReflectionModelChange.bind(this);
 
         this._binds.steps.addEventListener('input', this._handleChange);
         this._binds.opacity.addEventListener('input', this._handleChange);
         this._binds.randomize.addEventListener('change', this._handleFilterChange);
+        this._binds.reflectionModelSelect.addEventListener('change', this._handleReflectionModelChange);
         this._binds.lightSelect.addEventListener('change', this._handleLightChange);
 
         this._tfwidget = new TransferFunctionWidget();
@@ -31,6 +33,7 @@ class RCRendererDialog extends AbstractDialog {
         this._handleChange();
         this._handleFilterChange();
         this._handleLightChange();
+        this._handleReflectionModelChange();
 
     }
 
@@ -55,6 +58,20 @@ class RCRendererDialog extends AbstractDialog {
         this._renderer._randomize = !!this._binds.randomize.isChecked();
     }
 
+    getSelectedReflectionModel() {
+        const model = this._binds.reflectionModelSelect.getValue();
+        switch (model) {
+            case 'lambertian' : return 0;
+            case 'phong' : return 1;
+        }
+    }
+
+    _handleReflectionModelChange() {
+        const model = this.getSelectedReflectionModel();
+        this._renderer._reflectionModel = model;
+        this._renderer.reset()
+    }
+
     _getLightClass(light) {
         switch (light) {
             case 'ambient'    : return AmbientLight;
@@ -72,12 +89,6 @@ class RCRendererDialog extends AbstractDialog {
         }
     }
 
-    // _handleLightChange() {
-    //     const light = this.getSelectedLight();
-    //     console.log(light);
-    //     this._renderer._lightType = light;
-    // }
-
     _handleLightChange() {
         if (this._lightDialog) {
             this._lightDialog.destroy();
@@ -92,6 +103,8 @@ class RCRendererDialog extends AbstractDialog {
         this._lightDialog.appendTo(container);
 
         this._renderer._lightType = this.getSelectedLight();
+
+        this._renderer.reset()
 
     }
 

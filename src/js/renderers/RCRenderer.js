@@ -11,7 +11,7 @@ constructor(gl, volume, environmentTexture, options) {
 
     Object.assign(this, {
         _stepSize        : 0.004,  // steps: 250
-        _alphaCorrection : 40,
+        _alphaCorrection : 10,
         _lightType       : 0,
         _light     : new AmbientLight(),
         _randomize       : false,
@@ -59,6 +59,7 @@ _generateFrame() {
     } else if (this._lightType === 2) {
         gl.uniform3fv(program.uniforms.uLight, this._light.position);
         gl.uniform1f(program.uniforms.uLightAttenuation, this._light.attenuation);
+        gl.uniform1f(program.uniforms.uLightIntensity, this._light.intensity);
     }
 
     gl.activeTexture(gl.TEXTURE0);
@@ -70,6 +71,7 @@ _generateFrame() {
     gl.uniform1i(program.uniforms.uVolume, 0);
     gl.uniform1f(program.uniforms.uStepSize, this._stepSize);
     gl.uniform1f(program.uniforms.uRandomize, this._randomize);
+    gl.uniform1f(program.uniforms.uReflectionModel, this._reflectionModel);
     gl.uniform1f(program.uniforms.uLightType, this._lightType);
     gl.uniform3fv(program.uniforms.uLightColor,  this._light.color);
     gl.uniform1f(program.uniforms.uOffset, Math.random());
