@@ -6,8 +6,8 @@ constructor(renderer) {
     this._renderer = renderer;
 
     Object.assign(this, {
-        direction: [1.0, 1.0, 1.0],
-        color: [1.0, 1.0, 1.0],
+        direction   : [1.0, 1.0, 1.0],
+        color       : [1.0, 1.0, 1.0],
     });
 }
 

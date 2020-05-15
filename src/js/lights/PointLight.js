@@ -6,8 +6,9 @@ constructor(renderer) {
     this._renderer = renderer;
 
     Object.assign(this, {
-        position: [1.0, 1.0, 1.0],
-        color: [1.0, 1.0, 1.0],
+        position    : [1.0, 1.0, 1.0],
+        color       : [1.0, 1.0, 1.0],
+        attenuation : 1.0
     });
 }
 
@@ -25,6 +26,10 @@ setColor(color) {
     this.color[0] = color.r;
     this.color[1] = color.g;
     this.color[2] = color.b;
+}
+
+setAttenuation(attenuation) {
+    this.attenuation = attenuation;
 }
 
 destroy() {

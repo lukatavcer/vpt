@@ -26,6 +26,20 @@
           "value": 1
         }
       ]
+    },
+    {
+      "type": "field",
+      "label": "Attenuation:",
+      "children": [
+        {
+          "type": "slider",
+          "bind": "attenuation",
+          "value": 1.0,
+          "min": 0.01,
+          "max": 1.0,
+          "step": 0.1
+        }
+      ]
     }
   ]
 }

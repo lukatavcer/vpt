@@ -35,6 +35,7 @@ uniform bool uRandomize;
 uniform vec3 uLight;  // Position or direction
 uniform float uLightType;
 uniform vec3 uLightColor;
+uniform float uLightAttenuation;
 
 
 in vec3 vRayFrom;
@@ -170,7 +171,7 @@ void main() {
                     pos = mix(from, to, t);
                 }
 
-                lightDirection = normalize(light - pos);
+                lightDirection = light - pos;
                 // Get voxel value/intensity
                 voxel = texture(uVolume, pos);
                 val = voxel.r;
@@ -180,7 +181,7 @@ void main() {
                 gradient *= 2.0;
                 gradMagnitude = length(gradient);
                 vec3 normal = normalize(gradient);
-                float lambert = max(dot(normal, lightDirection), 0.15);
+                float lambert = max(dot(normal, normalize(lightDirection)), 0.15);
 
                 // Map intensity & color from the transfer function
                 float koef = 1.0 - (exp(-0.5 * gradMagnitude));
@@ -199,6 +200,10 @@ void main() {
                 // Mix light color with the material (transfer function) color
                 colorSample.rgb = mix(colorSample.rgb, uLightColor, colorSample.a);
                 colorSample.rgb *= lambert;
+
+                float d = length(lightDirection);
+                float attenuation = clamp( uLightAttenuation / d, 0.0, 1.0);
+                colorSample.rgb *= attenuation;
 
                 accumulator += (1.0 - accumulator.a) * colorSample;
                 offset = mod(offset + uStepSize, 1.0);

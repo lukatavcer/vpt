@@ -58,6 +58,7 @@ _generateFrame() {
         gl.uniform3fv(program.uniforms.uLight, this._light.direction);
     } else if (this._lightType === 2) {
         gl.uniform3fv(program.uniforms.uLight, this._light.position);
+        gl.uniform1f(program.uniforms.uLightAttenuation, this._light.attenuation);
     }
 
     gl.activeTexture(gl.TEXTURE0);
