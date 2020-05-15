@@ -6,20 +6,23 @@
 
 class PointLightDialog extends AbstractDialog {
 
-constructor(renderer, options) {
+constructor(light, options) {
     super(UISPECS.PointLightDialog, options);
 
-    this._renderer = renderer;
+    this._light = light;
     this._handleChange = this._handleChange.bind(this);
 
-    this._binds.direction.addEventListener('input', this._handleChange);
+    this._binds.color.addEventListener('change', this._handleChange);
+    this._binds.position.addEventListener('input', this._handleChange);
 }
 
     _handleChange() {
-        const direction = this._binds.direction.getValue();
-        this._renderer._light[0] = direction.x;
-        this._renderer._light[1] = direction.y;
-        this._renderer._light[2] = direction.z;
-    }
+        const position = this._binds.position.getValue();
+        this._light.setPosition(position);
 
+        const color = CommonUtils.hex2rgb(this._binds.color.getValue());
+        this._light.setColor(color);
+
+        this._light.resetRenderer()
+    }
 }

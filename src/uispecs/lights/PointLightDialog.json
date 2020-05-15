@@ -7,11 +7,22 @@
   "children": [
     {
       "type": "field",
+      "label": "Color:",
+      "children": [
+        {
+          "type": "color-chooser",
+          "bind": "color",
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "field",
       "label": "Light position:",
       "children": [
         {
           "type": "vector",
-          "bind": "direction",
+          "bind": "position",
           "value": 1
         }
       ]

@@ -23,7 +23,6 @@ class RCRendererDialog extends AbstractDialog {
         this._binds.opacity.addEventListener('input', this._handleChange);
         this._binds.randomize.addEventListener('change', this._handleFilterChange);
         this._binds.lightSelect.addEventListener('change', this._handleLightChange);
-        // this._binds.direction.addEventListener('input', this._handleChange);
 
         this._tfwidget = new TransferFunctionWidget();
         this._binds.tfcontainer.add(this._tfwidget);
@@ -42,16 +41,6 @@ class RCRendererDialog extends AbstractDialog {
     _handleChange() {
         this._renderer._stepSize = 1 / this._binds.steps.getValue();
         this._renderer._alphaCorrection = this._binds.opacity.getValue();
-
-        // const color = CommonUtils.hex2rgb(this._binds.color.getValue());
-        // this._renderer._diffuse[0] = color.r;
-        // this._renderer._diffuse[1] = color.g;
-        // this._renderer._diffuse[2] = color.b;
-
-        // const direction = this._binds.direction.getValue();
-        // this._renderer._light[0] = direction.x;
-        // this._renderer._light[1] = direction.y;
-        // this._renderer._light[2] = direction.z;
 
         this._renderer.reset();
     }
@@ -123,7 +112,7 @@ class RCRendererDialog extends AbstractDialog {
         }
         const lightClass = this._getLightClass(light);
         this._light = new lightClass(this._renderer);
-        this._renderer._lightObject = this._light;
+        this._renderer._light = this._light;
     }
 
     getLight() {

@@ -18,6 +18,12 @@ constructor(light, options) {
 _handleChange() {
     const direction = this._binds.direction.getValue();
     this._light.setDirection(direction);
+
+    const color = CommonUtils.hex2rgb(this._binds.color.getValue());
+    console.log(color);
+    this._light.setColor(color);
+
+    this._light.resetRenderer()
 }
 
 }

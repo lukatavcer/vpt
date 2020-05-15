@@ -2,6 +2,7 @@
 
 // #include ../WebGL.js
 // #include AbstractRenderer.js
+// #include ../lights/AmbientLight.js
 
 class RCRenderer extends AbstractRenderer {
 
@@ -12,7 +13,7 @@ constructor(gl, volume, environmentTexture, options) {
         _stepSize        : 0.004,  // steps: 250
         _alphaCorrection : 40,
         _lightType       : 0,
-        _light           : [9.0, 1.0, 1.0],
+        _light     : new AmbientLight(),
         _randomize       : false,
         _diffuse         : [1, 0.2, 0.9]
     }, options);
@@ -52,31 +53,25 @@ _generateFrame() {
 
     const program = this._programs.generate;
     gl.useProgram(program.program);
-    let direction;
     if (this._lightType === 0) {
-        direction = [1.0, 1.0, 1.0]
-    } else if (this._lightType === 1) {
-        direction = this._lightObject.direction;
-    } else if (this._lightType === 2) {
-        direction = this._lightObject.direction;
-    }
 
-    console.log(this._lightType);
-    console.log(direction);
-    gl.uniform3fv(program.uniforms.uLight, direction);
+    } else if (this._lightType === 1) {
+        gl.uniform3fv(program.uniforms.uLight, this._light.direction);
+    } else if (this._lightType === 2) {
+        gl.uniform3fv(program.uniforms.uLight, this._light.position);
+    }
 
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_3D, this._volume.getTexture());
     gl.activeTexture(gl.TEXTURE1);
     gl.bindTexture(gl.TEXTURE_2D, this._transferFunction);
 
-    // console.log("this._lightObject");
-    // console.log(this._lightObject);
     gl.uniform1i(program.uniforms.uTransferFunction, 1);
     gl.uniform1i(program.uniforms.uVolume, 0);
     gl.uniform1f(program.uniforms.uStepSize, this._stepSize);
     gl.uniform1f(program.uniforms.uRandomize, this._randomize);
     gl.uniform1f(program.uniforms.uLightType, this._lightType);
+    gl.uniform3fv(program.uniforms.uLightColor,  this._light.color);
     gl.uniform1f(program.uniforms.uOffset, Math.random());
     gl.uniform1f(program.uniforms.uAlphaCorrection, this._alphaCorrection);
     gl.uniformMatrix4fv(program.uniforms.uMvpInverseMatrix, false, this._mvpInverseMatrix.m);

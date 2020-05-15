@@ -7,12 +7,12 @@
   "children": [
     {
       "type": "field",
-      "label": "Light direction:",
+      "label": "Color:",
       "children": [
         {
-          "type": "vector",
-          "bind": "direction",
-          "value": 1
+          "type": "color-chooser",
+          "bind": "color",
+          "value": "#ffffff"
         }
       ]
     }
